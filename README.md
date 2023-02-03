@@ -10,14 +10,17 @@
  
  - A command terminal. VS Code allows access to a command terminal within the IDE.
  
- ## Optional 
- - An API platform such as [Postman](https://www.postman.com/downloads/). Curl commands within a command terminal can be used in lieu of this platform.
+ ## Recommended 
+ - An API platform such as [Postman](https://www.postman.com/downloads/). 
+ - Curl commands within a command terminal can be used in lieu of this platform. No curl commands are provided.
  
  ## Start Up
  - After the repository has been pulled and established on the local computer.
  - Open a command terminal. 
  - Use the `cd` command to change directories to `ReceiptProcessorChallenge`. 
  - At the command prompt type `go run .` or `go run main.go` to startup the HTTP server on `localhost:8080`.
+ 
+ ## How to Use Postman
  - Open the API platform Postman Desktop and create a new workspace using the `Workspaces` dropdown menu located at the top left-hand corner of the window.
  - Open a new tab using the `+` button located near the top middle of the workspace.
  - Using the method type dropdown that is defaulted to GET in the newly opened tab, select `POST`
@@ -30,7 +33,6 @@
  - In the `Enter request URL` field type `localhost:8080/receipts/` then paste the id and continue typing `/points`
  - Press `Send`
  - A response with a JSON object will be returned.
- 
- 
- 
- //Reflection (why did you include gin [makes development easier with go], how would you clean up the code?, database)
+
+# Reflection
+This project was written in a language in which I had no prior knowledge. There were some challenges with syntax along the way but they were overcome utilizing the official [Go Documentation](https://go.dev/doc/). The project code could have been implemented more effeciently. For instance, the Receipt.go file could be broken apart into multiple files containing the different structs and their accompanying functions. A different web framework or package could be used in lieu of Gin. Gin was used because there is a helpful [Go Tuturial](https://go.dev/doc/tutorial/web-service-gin) located in the Go Documentation that assisted in building a RESTful web service API. Gin is fast, crash-free, and has methods for JSON validation. In the future this project could be adapted to work with an actual database and forego the use of maps as makeshift databases. Overall this was a fun project and provided me with the opportunity to learn a new language. Thank you for your time and consideration.
