@@ -6,7 +6,6 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/gob"
-	"fmt"
 	"log"
 	"math"
 	"regexp"
@@ -42,7 +41,6 @@ func (receipt Receipt) retailerNamePoints(retailer string) int{
     retailer = regularExpression.ReplaceAllString(retailer, "")
     points := 0
     points += len(retailer)
-    fmt.Println("RETAILER NAME POINTS: ", points)
     return points
 }
 func (receipt Receipt) roundDollarPoints(total string) int{
@@ -50,7 +48,6 @@ func (receipt Receipt) roundDollarPoints(total string) int{
     if (strings.Contains(total, ".00")){
         points += 50
     }
-    fmt.Println("ROUND DOLLAR POINTS: ", points)
     return points
 }
 func (receipt Receipt) quarterMultiplePoints(total string) int{
@@ -59,13 +56,11 @@ func (receipt Receipt) quarterMultiplePoints(total string) int{
         strings.Contains(total, ".50") || strings.Contains(total, ".75")){
         points += 25
     }
-    fmt.Println("QUARTER MULTIPLE POINTS: ", points)
     return points
 }
 func (receipt Receipt) itemPairsPoints(items []Items.Item) int{
     points := 0
     points += 5*(len(items)/2) //automatically performs floor division for integers
-    fmt.Println("ITEM PAIRS POINTS: ", points)
     return points
 }
 func (receipt Receipt) trimmedLengthPoints(items []Items.Item, totalString string) int{
@@ -83,7 +78,6 @@ func (receipt Receipt) trimmedLengthPoints(items []Items.Item, totalString strin
             points += int(math.Ceil(result))
         }
     }
-    fmt.Println("TRIMMED LENGTH POINTS: ", points)
     return points
 }
 func (receipt Receipt) oddDayPoints(purchaseDate string) int{
@@ -96,7 +90,6 @@ func (receipt Receipt) oddDayPoints(purchaseDate string) int{
     if (purchaseDay%2 == 1){
         points += 6
     }  
-    fmt.Println("ODD DAY POINTS: ", points)  
     return points
 }
 func (receipt Receipt) purchaseTimePoints(purchaseTime string) int{
@@ -109,7 +102,6 @@ func (receipt Receipt) purchaseTimePoints(purchaseTime string) int{
     if (purchaseHour >= 14 && purchaseHour <= 16){
         points += 10
     } 
-    fmt.Println("PURCHASE TIME POINTS: ", points)  
     return points
 }
 
